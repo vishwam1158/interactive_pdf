@@ -1,3 +1,10 @@
+## 0.2.0
+
+* Cross-platform file saving enhancements
+* Improved example application with better hotspot demonstrations
+* Documentation and roadmap updates
+* Internal refinements for future enhancements
+
 ## 0.1.0
 
 ### Initial Release 🎉
