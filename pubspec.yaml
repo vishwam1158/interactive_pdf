@@ -1,9 +1,9 @@
-name: advance_pdf_genrator
-description: "Advanced PDF generator with interactive hotspot annotations - embed text/images that reveal on long-press, stored persistently in PDF."
+name: interactive_pdf
+description: "Interactive PDF package with hotspot annotations - embed text/images that reveal on long-press, stored persistently in PDF."
 version: 0.1.0
-homepage: https://github.com/vishwam/advance_pdf_genrator
-repository: https://github.com/vishwam/advance_pdf_genrator
-issue_tracker: https://github.com/vishwam/advance_pdf_genrator/issues
+homepage: https://github.com/vishwam1158/interactive_pdf
+repository: https://github.com/vishwam1158/interactive_pdf
+issue_tracker: https://github.com/vishwam1158/interactive_pdf/issues
 
 environment:
   sdk: ^3.8.1

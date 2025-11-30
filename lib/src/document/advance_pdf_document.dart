@@ -8,7 +8,7 @@ import 'package:uuid/uuid.dart';
 import '../models/models.dart';
 import '../utils/platform_utils.dart' as platform;
 
-/// Key used to identify advance_pdf_genrator annotations in PDF
+/// Key used to identify interactive_pdf annotations in PDF
 const String kApdfHotspotKey = 'APDF_Hotspot';
 
 /// Key for the embedded manifest file
@@ -89,7 +89,7 @@ class AdvancePdfDocument {
          author: author,
          subject: subject,
          keywords: keywords?.join(', '),
-         creator: creator ?? 'advance_pdf_genrator',
+         creator: creator ?? 'interactive_pdf',
          theme: theme,
        );
 

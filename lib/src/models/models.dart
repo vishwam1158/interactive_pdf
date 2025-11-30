@@ -1,4 +1,4 @@
-/// Core data models for advance_pdf_genrator
+/// Core data models for interactive_pdf
 library;
 
 export 'hotspot_rect.dart';

@@ -14,7 +14,7 @@ class AdvancePdfParser {
   /// Parse hotspot annotations from PDF bytes.
   ///
   /// Returns a list of [PdfHotspotAnnotation] found in the PDF.
-  /// If the PDF doesn't contain advance_pdf_genrator annotations,
+  /// If the PDF doesn't contain interactive_pdf annotations,
   /// returns an empty list.
   static Future<List<PdfHotspotAnnotation>> parseHotspots(
     Uint8List pdfBytes,
@@ -104,7 +104,7 @@ class AdvancePdfParser {
     return dimensions;
   }
 
-  /// Check if a PDF contains advance_pdf_genrator annotations.
+  /// Check if a PDF contains interactive_pdf annotations.
   static Future<bool> hasHotspots(Uint8List pdfBytes) async {
     try {
       final pdfString = String.fromCharCodes(pdfBytes);

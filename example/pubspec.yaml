@@ -1,5 +1,5 @@
 name: example
-description: Example app for advance_pdf_genrator
+description: Example app for interactive_pdf
 publish_to: 'none'
 
 environment:
@@ -8,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  advance_pdf_genrator:
+  interactive_pdf:
     path: ../
   pdf: ^3.11.1
 

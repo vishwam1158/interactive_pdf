@@ -1,4 +1,4 @@
-# Advance PDF Generator
+# Interactive PDF
 
 A Flutter package for generating PDFs with **interactive hotspot annotations** that reveal embedded text or images on long-press. The annotations are stored persistently in the PDF and work across sharing and reopening.
 
@@ -27,7 +27,7 @@ A Flutter package for generating PDFs with **interactive hotspot annotations** t
 ### Platform-specific File Saving
 
 ```dart
-import 'package:advance_pdf_genrator/advance_pdf_genrator.dart';
+import 'package:interactive_pdf/interactive_pdf.dart';
 
 // Save PDF bytes - works on all platforms
 final bytes = await doc.save();
@@ -57,7 +57,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  advance_pdf_genrator: ^0.1.0
+  interactive_pdf: ^0.1.0
 ```
 
 ## 🚀 Quick Start
@@ -65,7 +65,7 @@ dependencies:
 ### Creating an Interactive PDF
 
 ```dart
-import 'package:advance_pdf_genrator/advance_pdf_genrator.dart';
+import 'package:interactive_pdf/interactive_pdf.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
@@ -104,7 +104,7 @@ final bytes = await doc.save();
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:advance_pdf_genrator/advance_pdf_genrator.dart';
+import 'package:interactive_pdf/interactive_pdf.dart';
 
 class PdfPreviewScreen extends StatelessWidget {
   final Uint8List pdfBytes;

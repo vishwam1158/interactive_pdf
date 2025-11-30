@@ -1,9 +1,9 @@
-/// Advanced PDF Generator with Interactive Hotspot Annotations
+/// Interactive PDF with Hotspot Annotations
 ///
 /// A Flutter package for generating PDFs with interactive hotspot regions
 /// that reveal embedded text or images on long-press. The annotations are
 /// stored persistently in the PDF and work across sharing and reopening.
-library advance_pdf_genrator;
+library interactive_pdf;
 
 // Core exports
 export 'src/models/models.dart';
