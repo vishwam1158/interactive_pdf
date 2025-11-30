@@ -297,6 +297,91 @@ void main() {
       // PDF files start with %PDF
       expect(String.fromCharCodes(bytes.sublist(0, 4)), '%PDF');
     });
+
+    test('embedded manifest markers are present in saved PDF', () async {
+      final doc = AdvancePdfDocument();
+
+      doc.addPage(
+        pageFormat: PdfPageFormat.a4,
+        build: (context) => pw.Center(child: pw.Text('Manifest Test')),
+      );
+
+      doc.addTextHotspot(
+        pageIndex: 0,
+        rect: const PdfHotspotRect(
+          left: 100,
+          bottom: 700,
+          width: 200,
+          height: 50,
+        ),
+        text: 'Hidden manifest test',
+      );
+
+      final bytes = await doc.save();
+      final pdfString = String.fromCharCodes(bytes);
+
+      // Simple sanity output for debugging when this test fails.
+      final startIdx = pdfString.indexOf(kManifestStartMarker);
+      final endIdx = pdfString.indexOf(kManifestEndMarker);
+
+      // These prints are only for debugging and do not affect behavior.
+      // They help us inspect where (or if) the markers appear.
+      // ignore: avoid_print
+      print('manifest start index: ' + startIdx.toString());
+      // ignore: avoid_print
+      print('manifest end index: ' + endIdx.toString());
+
+      if (startIdx == -1) {
+        // ignore: avoid_print
+        print('PDF tail snippet:');
+        final tail = pdfString.substring(pdfString.length - 400);
+        // ignore: avoid_print
+        print(tail);
+      }
+
+      expect(startIdx != -1, isTrue);
+      expect(endIdx != -1, isTrue);
+    });
+
+    test('reopens document from bytes with fromBytes', () async {
+      final doc = AdvancePdfDocument(
+        title: 'Reopen Test',
+        author: 'Test Author',
+      );
+
+      doc.addPage(
+        pageFormat: PdfPageFormat.a4,
+        build: (context) => pw.Center(child: pw.Text('Reopen Test Document')),
+      );
+
+      doc.addTextHotspot(
+        pageIndex: 0,
+        rect: const PdfHotspotRect(
+          left: 100,
+          bottom: 700,
+          width: 200,
+          height: 50,
+        ),
+        text: 'Reopen hidden info',
+      );
+
+      final bytes = await doc.save();
+
+      final reopened = await AdvancePdfDocument.fromBytes(bytes);
+
+      expect(reopened.pageCount, doc.pageCount);
+      expect(reopened.hotspots.length, doc.hotspots.length);
+
+      final original = doc.hotspots.first;
+      final again = reopened.hotspots.first;
+
+      expect(again.pageIndex, original.pageIndex);
+      expect(again.rect.left, original.rect.left);
+      expect(again.rect.bottom, original.rect.bottom);
+      expect(again.rect.width, original.rect.width);
+      expect(again.rect.height, original.rect.height);
+      expect(again.content.text, original.content.text);
+    });
   });
 
   group('PdfCoordinateMapper', () {
